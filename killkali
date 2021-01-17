@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+# Unmounting and unbinding stuff
+
+umount kalifs/proc
+umount kalifs/sys
+umount kalifs/dev
+
+echo "Kali chroot killed, goodbye"
