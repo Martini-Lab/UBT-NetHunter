@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+# Mounting and binding stuff
+
+cd ~/Desktop/kalich
+
+mount -t proc proc kalifs/proc
+mount -t sysfs sys kalifs/sys
+mount -o bind /dev kalifs/dev
+
+echo "Kalifs mounted and ready to go"
