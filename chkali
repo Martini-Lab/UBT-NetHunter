@@ -6,12 +6,11 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
+
 # Mounting and binding stuff
 
 cd /home/phablet/Desktop/kalich;
 
-mount -t proc proc kalifs/proc;
-mount -t sysfs sys kalifs/sys;
-mount -o bind /dev kalifs/dev;
+chroot kalifs;
 
 echo "Kalifs mounted and ready to go";
