@@ -6,13 +6,23 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
+# Mount / as read/write
+sudo mount -o remout,rw /;
+
+# Before starting lets clean up older files that user may have around
+sudo rm -rf /usr/bin/killkali;
+sudo rm -rf /usr/bin/mountkali;
+sudo rm -rf /usr/bin/kalich;
+
+sudo rm -rf /home/phablet/Desktop/kalich;
+
+
 # Start of the script
 
 echo "#";
 echo "# Doing some preparation";
 echo "#";
 
-sudo mount -o remout,rw /;
 sudo apt update;
 sudo apt insall -y wget curl;
 
@@ -22,9 +32,10 @@ echo "#";
 
 cd /home/phablet/Desktop;
 mkdir kalich;
+cd kalich;
 wget https://build.nethunter.com/kalifs/kalifs-latest/kalifs-arm64-minimal.tar.xz;
 mv kalifs-arm64-minimal.tar.xz kalifs.tar.xz;
-echo "This will take sme time so please wait...";
+echo "This will take some time so please wait...";
 sudo tar --numeric-owner -xpf kalifs.tar.xz;
 
 echo "#";
@@ -33,13 +44,13 @@ echo "#";
 
 wget https://github.com/Martini-Lab/misc/raw/main/killkali;
 wget https://github.com/Martini-Lab/misc/raw/main/mountkali;
-wget https://github.com/Martini-Lab/misc/raw/main/kalich;
+wget https://github.com/Martini-Lab/misc/raw/main/chkali;
 
 chmod +x killkali;
 chmod +x mountkali;
-chmod +x kalich;
+chmod +x chkali;
 
 
 mv killkali /usr/bin/killkali;
 mv mountkali /usr/bin/mountkali;
-mv kalich /usr/bin/kalich;
+mv chkali /usr/bin/kalich;
