@@ -6,11 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
-
 # Mounting and binding stuff
-
-cd /home/phablet/Desktop/kalich;
-
-chroot kalifs;
-
 echo "Kalifs mounted and ready to go";
+
+chroot /home/phablet/Desktop/kalich/kalifs;

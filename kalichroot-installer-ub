@@ -9,13 +9,19 @@ fi
 # Mount / as read/write
 sudo mount -o remout,rw /;
 
+# Run killkali if its a upgrade and chroot runs
+killkali
+
 # Before starting lets clean up older files that user may have around
-sudo rm -rf /usr/bin/killkali;
-sudo rm -rf /usr/bin/mountkali;
-sudo rm -rf /usr/bin/kalich;
+rm -rf /usr/bin/killkali;
+rm -rf /usr/bin/mountkali;
+rm -rf /usr/bin/chkali;
 
-sudo rm -rf /home/phablet/Desktop/kalich;
+# Delete old kali chroot
+rm -rf /home/phablet/Desktop/kalich;
 
+# Just in case someone used older script
+rm -rf /usr/bin/kalich;
 
 # Start of the script
 
@@ -23,8 +29,8 @@ echo "#";
 echo "# Doing some preparation";
 echo "#";
 
-sudo apt update;
-sudo apt insall -y wget curl;
+apt update;
+apt insall -y wget curl;
 
 echo "#";
 echo "# Starting chroot preparation";
@@ -36,7 +42,10 @@ cd kalich;
 wget https://build.nethunter.com/kalifs/kalifs-latest/kalifs-arm64-minimal.tar.xz;
 mv kalifs-arm64-minimal.tar.xz kalifs.tar.xz;
 echo "This will take some time so please wait...";
-sudo tar --numeric-owner -xpf kalifs.tar.xz;
+tar --numeric-owner -xpf kalifs.tar.xz;
+
+rm -rf kalifs.tar.xz
+mv kali-arm64 kalifs
 
 echo "#";
 echo "# Downloading some scripts for mounting chroot";
@@ -53,4 +62,4 @@ chmod +x chkali;
 
 mv killkali /usr/bin/killkali;
 mv mountkali /usr/bin/mountkali;
-mv chkali /usr/bin/kalich;
+mv chkali /usr/bin/chkali;

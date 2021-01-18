@@ -8,10 +8,8 @@ fi
 
 # Mounting and binding stuff
 
-cd /home/phablet/Desktop/kalich;
-
-mount -t proc proc kalifs/proc;
-mount -t sysfs sys kalifs/sys;
-mount -o bind /dev kalifs/dev;
+mount -t proc proc /home/phablet/Desktop/kalich/kalifs/proc;
+mount -t sysfs sys /home/phablet/Desktop/kalich/kalifs/sys;
+mount -o bind /dev /home/phablet/Desktop/kalich/kalifs/dev;
 
 echo "Kalifs mounted and ready to go";

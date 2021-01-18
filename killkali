@@ -8,10 +8,8 @@ fi
 
 # Unmounting and unbinding stuff
 
-cd /home/phablet/Desktop/kalich
-
-umount kalifs/proc
-umount kalifs/sys
-umount kalifs/dev
+umount /home/phablet/Desktop/kalich/kalifs/proc
+umount /home/phablet/Desktop/kalich/kalifs/sys
+umount /home/phablet/Desktop/kalich/kalifs/dev
 
 echo "Kali chroot killed, goodbye"
